@@ -22,6 +22,7 @@
 #define __GUB_H__
 
 #include <gst/gst.h>
+#include <GL/gl.h>
 
 #if _WIN32
 #define EXPORT_API __declspec(dllexport)

@@ -8,7 +8,7 @@ OUTDIR = ../../Build/Linux
 SRCDIR = ../../Source
 PLUGINDIR = ../../../DvbCssWc
 
-CFLAGS       = -fPIC -g  `pkg-config gstreamer-1.0 --cflags` -I/usr/local/lib/gstreamer-1.0/include -I/usr/local/include/gstreamer-1.0 -I./$(PLUGINDIR)/Source -I./Plugin/src#-pedantic -Wall -Wextra -ggdb3 
+CFLAGS       = -fPIC -g  `pkg-config --cflags --libs gstreamer-1.0 gstreamer-video-1.0 gstreamer-gl-1.0 glu glib-2.0 gio-2.0` -I/usr/local/lib/gstreamer-1.0/include -I/usr/local/include/gstreamer-1.0 -I./$(PLUGINDIR)/Source -I./Plugin/src#-pedantic -Wall -Wextra -ggdb3 
 LDFLAGS      = -shared
 LIBS         = $(shell pkg-config --libs glib-2.0) $(shell pkg-config --libs gio-2.0) $(shell pkg-config --libs gstreamer-1.0) -lm 
 DEBUGFLAGS   = -O0 -D _DEBUG
