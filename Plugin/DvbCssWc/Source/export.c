@@ -44,7 +44,7 @@ extern EXPORT_API Server* server_new(void){
 	return s;
 }
 
-void server_free(Server** s) {
+extern EXPORT_API void server_free(Server** s) {
 	if((*s)->loop){
 		gst_object_unref((*s)->loop);
 		(*s)->loop = NULL;

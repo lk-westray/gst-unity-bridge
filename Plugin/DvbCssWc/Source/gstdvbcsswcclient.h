@@ -1,6 +1,3 @@
-#ifndef __DVB_CSS_WC_CLIENT_H__
-#define __DVB_CSS_WC_CLIENT_H__
-
 /* GStreamer
  * Copyright (C) 2016 
  *  Authors:  Wojciech Kapsa PSNC <kapsa@man.poznan.pl>
@@ -25,6 +22,15 @@
  * Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
+
+#ifndef __DVB_CSS_WC_CLIENT_H__
+#define __DVB_CSS_WC_CLIENT_H__
+
+#ifdef _WIN32
+#define EXPORT_API __declspec(dllexport)
+#else
+#define EXPORT_API
+#endif
 
 #include <gst/gst.h>
 #include <gst/gstsystemclock.h>
@@ -77,7 +83,7 @@ struct _GstDvbCssWcClientClockClass
  * Returns: a new #GstClock that receives a time from the remote
  * clock.
  */
-GstClock*	gst_dvb_css_wc_client_clock_new      (const gchar *name, const gchar *remote_address, gint remote_port, GstClockTime base_time);
+extern EXPORT_API GstClock*	gst_dvb_css_wc_client_clock_new      (const gchar *name, const gchar *remote_address, gint remote_port, GstClockTime base_time);
 GType     gst_dvb_css_wc_client_clock_get_type (void);
 
 #ifdef G_DEFINE_AUTOPTR_CLEANUP_FUNC

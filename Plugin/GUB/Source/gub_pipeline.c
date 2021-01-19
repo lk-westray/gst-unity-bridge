@@ -21,7 +21,8 @@
 #include <gst/video/video.h>
 #include <gst/net/gstnet.h>
 #include <gst/pbutils/encoding-profile.h>
-#include <gstdvbcsswcclient.h>
+// FIXME: DVB clock support fix on Linux
+// #include <gstdvbcsswcclient.h>
 #include <memory.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -368,9 +369,10 @@ EXPORT_API void gub_pipeline_setup_decoding_clock(GUBPipeline *pipeline, const g
 		pipeline->net_clock = gst_net_client_clock_new("net_clock", net_clock_addr, net_clock_port, 0);
 	    }
 	    else{
-		pipeline->net_clock = gst_dvb_css_wc_client_clock_new("dvb_clock", net_clock_addr, net_clock_port, 0);
-	    }
-        if (!pipeline->net_clock) {
+        // FIXME: support DVB clock support fix on Linux
+		// pipeline->net_clock = gst_dvb_css_wc_client_clock_new("dvb_clock", net_clock_addr, net_clock_port, 0);
+	    // }
+        // if (!pipeline->net_clock) {
             gub_log_pipeline(pipeline, "Could not create network clock at %s %d", net_clock_addr, net_clock_port);
             return;
         }
