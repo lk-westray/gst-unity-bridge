@@ -22,13 +22,13 @@ Install dependencies
 # See https://gstreamer.freedesktop.org/documentation/installing/on-linux.html
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
-# Install extra gstreamer libs (see Plugin/GUB/Project/Linux/Makefile)
+# Install gstreamer development packages (headers)
 sudo apt install libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev 
-# Or packages that provide following libs:
+# In other words, the packages that provide the headers for libs listed in the Makefile (Plugin/GUB/Project/Linux/Makefile):
 # gstreamer-plugins-base-1.0 gstreamer-app-1.0 gstreamer-video-1.0 gstreamer-net-1.0 gstreamer-pbutils-1.0 gstreamer-gl-1.0
 
 # OpenGL related
-sudo apt freeglut3-dev libglew2.0 libglew-dev libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev
+sudo apt install freeglut3-dev libglew2.0 libglew-dev libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev
 ```
 
 Build
@@ -41,11 +41,11 @@ make
 Install
 
 ```sh
-# Copy the contents of Assets/ to your unity project's Assets/ folder
+# Copy the contents of Assets/ to your Unity project's Assets/ folder
 cp -r Unity/Assets/* MyPlugin/Assets/
 
 # Copy the plugin library to your Unity project
 cp Plugin/GUB/Build/Linux/libGstUnityBridge.so MyPlugin/Assets/Plugins/x86_64/
 ```
 
-Now in Unity Project view select libGstUnityBridge.so, uncheck 'Any Platform', and under 'Platform settings' make sure that only 'Linux' and 'x86_64' are checked
+Now in Unity's Project view, select `libGstUnityBridge.so`, uncheck 'Any Platform', and under 'Platform settings' make sure that only 'Linux' and 'x86_64' are checked
